@@ -9,6 +9,14 @@ contributions. Calculation is based on values from [GRA's Official Website](http
 
 # How To Use
 
-`git clone https://github.com/ankorGH/tax-calculator.git`
-`npm install`
-`npm start`
+```
+git clone https://github.com/ankorGH/tax-calculator.git
+```
+
+```
+npm install
+```
+
+```
+npm start
+```
