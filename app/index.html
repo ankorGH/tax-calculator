@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tax Calculator</title>
+    <style>
+        b [v-cloak] {
+            display: none;
+        }
+
+        .main-container {
+            width: 600px;
+            margin: 40px auto 0px auto;
+            padding: 30px;
+            border: 1px solid #dddddd;
+        }
+
+        .title {
+            color: #5755d9;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        #takeHome {
+            height: 100px;
+            text-align: center;
+            background-color: #5755d9;
+            color: #ffffff;
+            font-size: 70px;
+        }
+
+        #disclaimer {
+            margin-top: 10px;
+        }
+    </style>
+    <link rel="stylesheet" href="./css/spectre.min.css">
+    <link rel="stylesheet" href="./css/spectre-exp.min.css">
+</head>
+
+
+<body>
+    <div class="main-container">
+        <div class="title">
+            <h2>Calculate Your Tax</h2>
+        </div>
+        <div id="app" v-cloak>
+            <div class="container">
+                <div class="columns">
+                    <div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-6">
+                        <div class="form-group">
+                            <label class="form-switch">
+                                <input type="checkbox" v-model:value="isYearly">
+                                <i class="form-icon"></i> Use Annual Income
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" v-show="!isYearly">{{ labelIncomeMonthly }}</label>
+                            <label class="form-label" v-show="isYearly">{{ labelIncomeYearly }}</label>
+                            <input type="number" class="form-input" v-model:value="monthlyPay" />
+                            <label class="form-label" v-show="!isYearly">{{ lableAllowanceMonthly }}</label>
+                            <label class="form-label" v-show="isYearly">{{ labelAllowanceYearly }}</label>
+                            <input type="number" class="form-input" v-model:value="monthlyAllowance" />
+                        </div>
+                    </div>
+
+                    <div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-4">
+                        <br>
+                        <div>
+                            <h6>Income Tax</h6>
+                            <h1 class="">
+                                {{ calculateTax }}
+                            </h1>
+                        </div>
+                        <div>
+                            <h6>SSNIT Deduction</h6>
+                            <h1 class="">
+                                {{ calculateSSNIT }}
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h6>Monthly Take Home Salary</h6>
+            <div id="takeHome" class="container">
+                <div class="columns ">
+                    <div class="column col-12">
+                        GHS {{ calculateTakeHomeSalary}}
+                    </div>
+                </div>
+            </div>
+            <!-- <div id="disclaimer">
+                <h6>Disclaimer</h6>
+                Please note the values here may be different from the actual deduction.
+
+            </div> -->
+
+        </div>
+    </div>
+
+
+    <script src=" ./js/vue.js "></script>
+    <script src="./js/main.js "></script>
+
+
+</body>
+
+
+</html>
